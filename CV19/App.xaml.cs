@@ -8,10 +8,7 @@ using System.Windows;
 
 namespace CV19
 {
-    /// <summary>
-    /// Логика взаимодействия для App.xaml
-    /// </summary>
-    public partial class App : Application
+   public partial class App : Application
     {
     }
 }
