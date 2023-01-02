@@ -21,7 +21,7 @@
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom" >
-            <StatusBarItem MaxHeight="300">
+            <StatusBarItem  MinWidth="150" MaxWidth="300">
                 <TextBlock Text="1234"/>
             </StatusBarItem>
             <StatusBarItem>
@@ -47,6 +47,9 @@
                                RadiusX="5" RadiusY="7"/>
                     <Ellipse Grid.Column="1" Grid.Row="0"
                              Fill="Red" Stroke="Blue" StrokeThickness="3" Grid.ColumnSpan="2" Margin="0,0,517,0"/>
+                    <GridSplitter Grid.Column="0" Grid.RowSpan="2"
+                                  HorizontalAlignment="Right"
+                                  Width="4"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Вкладка 2"></TabItem>
