@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV19", "CV19\CV19.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F4740BC6-0568-4E60-82EE-D68DD98F2E28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV19Console", "CV19Console\CV19Console.csproj", "{C566B968-8285-438D-8F2A-E17A383B6FDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CV19Console", "CV19Console\CV19Console.csproj", "{C566B968-8285-438D-8F2A-E17A383B6FDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV19WPFTest", "CV19WPFTest\CV19WPFTest.csproj", "{29A91195-3FEA-4E51-90AE-4A6F27689926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testlib", "Testlib\Testlib.csproj", "{AAD99A10-79E6-4F77-BE38-6179BA68C679}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{29A91195-3FEA-4E51-90AE-4A6F27689926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29A91195-3FEA-4E51-90AE-4A6F27689926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29A91195-3FEA-4E51-90AE-4A6F27689926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD99A10-79E6-4F77-BE38-6179BA68C679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD99A10-79E6-4F77-BE38-6179BA68C679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD99A10-79E6-4F77-BE38-6179BA68C679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD99A10-79E6-4F77-BE38-6179BA68C679}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
