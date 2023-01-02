@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace CV19.Infrastructure.Commands.Base
+namespace TesLibFramework
 {
     internal abstract class Command:ICommand
     {
