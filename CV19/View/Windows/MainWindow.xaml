@@ -9,18 +9,25 @@
         
         Title="{Binding Title}" 
         Height="450" Width="800">
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Alt" Key="Z" Command="{Binding CloseApplicationCommand}"/>
+    </Window.InputBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+      <Window.Resources>
+        <cmd:CloseApplicationCommand x:Key="CloseApplicationCommand"/>
+    </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
                 <!--<MenuItem Header="Выход" Command="{Binding CloseApplicationCommand}" ></MenuItem>-->
-                <MenuItem Header="Выход">
+                <MenuItem Header="Выход" Command="{StaticResource CloseApplicationCommand}"/>
+                <!--<MenuItem Header="Выход">
                     <MenuItem.Command>
                      <cmd:CloseApplicationCommand/>
                     </MenuItem.Command>
-               </MenuItem>
+               </MenuItem>-->
             </MenuItem>
            <MenuItem Header="Помощь">
                 <MenuItem Header="О программе"></MenuItem>
@@ -53,7 +60,12 @@
                                StrokeThickness="3"
                                RadiusX="5" RadiusY="7" Grid.ColumnSpan="2" Margin="0,0,0,311" Grid.RowSpan="2"/>
                     <Ellipse Grid.Column="2" Grid.Row="0"
-                             Fill="Red" Stroke="Blue" StrokeThickness="3" Grid.ColumnSpan="2" Margin="0,0,517,311" Grid.RowSpan="2"/>
+                             Fill="Red" Stroke="Blue" StrokeThickness="3" Grid.ColumnSpan="2" Margin="0,0,517,311" Grid.RowSpan="2">
+                        <Ellipse.InputBindings>
+                            <MouseBinding Command="{Binding CloseApplicationCommand}"
+                                              MouseAction="LeftDoubleClick"/>
+                        </Ellipse.InputBindings>
+                    </Ellipse>
                     <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
                                   Width="4"/>
                 </Grid>
