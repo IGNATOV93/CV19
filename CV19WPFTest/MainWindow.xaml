@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Button" Margin="10,30,611,372"/>
+        <TextBox TextWrapping="Wrap" Text="TextBox" Margin="228,30,387,372"/>
+        <RadioButton Content="RadioButton" Height="53" VerticalAlignment="Top" Margin="242,125,387,0"/>
+        <CheckBox Content="CheckBox" Margin="472,133,159,264"/>
+        <ProgressBar Margin="24,277,644,153" RenderTransformOrigin="0.5,0.5">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.346"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.907"/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <Slider Margin="340,217,227,189"/>
+
     </Grid>
 </Window>
