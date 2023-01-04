@@ -34,26 +34,30 @@
             <MenuItem Header="Помощь">
                 <MenuItem Header="О программе"></MenuItem>
             </MenuItem>
-            <MenuItem>
+            <MenuItem Command="{Binding ChangeTabIndexCommand}" CommandParameter="-1">
                 <MenuItem.Header>
                     <fa:ImageAwesome Height="12" Icon="AngleLeft"/>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem>
+            <MenuItem Command="{Binding ChangeTabIndexCommand}" CommandParameter="+1">
                 <MenuItem.Header>
                     <fa:ImageAwesome Height="12" Icon="AngleRight"/>
                 </MenuItem.Header>
             </MenuItem>
+            <MenuItem Header="{Binding SelectedPageIndex}" IsEnabled="False"/>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom" >
             <StatusBarItem  MinWidth="150" MaxWidth="300">
                 <TextBlock Text="{Binding Status}"/>
             </StatusBarItem>
             <StatusBarItem>
-                <ProgressBar Width="120" Height="14" Value="30"></ProgressBar>
+                <ProgressBar Width="120" Height="14" Value="30" ></ProgressBar>
             </StatusBarItem>
+            <StatusBarItem Content="{Binding SelectedPageIndex}"/>
+
+
         </StatusBar>
-        <TabControl>
+        <TabControl SelectedIndex="{Binding SelectedPageIndex}">
             <TabItem >
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -94,6 +98,8 @@
             <TabItem Header="График">
                 <oxy:PlotView Model="{Binding MyModel}"/>
             </TabItem>
+            <TabItem Header="Вкладка 3"/>
+            <TabItem Header="Вкладка 4"/>
         </TabControl>
     </DockPanel>
 </Window>
