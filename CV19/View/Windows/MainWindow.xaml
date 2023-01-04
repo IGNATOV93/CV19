@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:cmd="clr-namespace:CV19.Infrastructure.Commands"
         xmlns:vm="clr-namespace:CV19.ViewModels"
         xmlns:local="clr-namespace:CV19"
@@ -16,7 +17,7 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-      <Window.Resources>
+    <Window.Resources>
         <cmd:CloseApplicationCommand x:Key="CloseApplicationCommand"/>
     </Window.Resources>
     <DockPanel>
@@ -30,7 +31,7 @@
                     </MenuItem.Command>
                </MenuItem>-->
             </MenuItem>
-           <MenuItem Header="Помощь">
+            <MenuItem Header="Помощь">
                 <MenuItem Header="О программе"></MenuItem>
             </MenuItem>
         </Menu>
@@ -46,7 +47,7 @@
             <TabItem >
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        
+
                         <!--<Image Source=""</Image>-->
                         <fa:ImageAwesome Icon="File" Height="13" Margin="0,0,5,0"
                                           Foreground="Red"/>
@@ -80,7 +81,9 @@
                                   Width="4"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Вкладка 2"></TabItem>
+            <TabItem Header="График">
+                <oxy:PlotView Model="{Binding MyModel}"/>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>
