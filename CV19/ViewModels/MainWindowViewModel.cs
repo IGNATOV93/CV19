@@ -57,6 +57,8 @@ namespace CV19.ViewModels
         }
 
         #endregion
+       // public bool CanChangeTabIndexCommandExecute(object p) ;
+
         #endregion
         public MainWindowViewModel()
         {

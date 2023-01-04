@@ -34,6 +34,16 @@
             <MenuItem Header="Помощь">
                 <MenuItem Header="О программе"></MenuItem>
             </MenuItem>
+            <MenuItem>
+                <MenuItem.Header>
+                    <fa:ImageAwesome Height="12" Icon="AngleLeft"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Header>
+                    <fa:ImageAwesome Height="12" Icon="AngleRight"/>
+                </MenuItem.Header>
+            </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom" >
             <StatusBarItem  MinWidth="150" MaxWidth="300">
