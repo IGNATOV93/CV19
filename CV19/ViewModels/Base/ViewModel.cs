@@ -21,6 +21,7 @@ namespace CV19.ViewModels.Base
         {
 
             if((Equals(field,value))) return false;
+            field = value;
             OnPropertyChanged(PropertyName); return true;
         }
        public void Dispose()
