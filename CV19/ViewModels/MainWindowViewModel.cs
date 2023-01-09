@@ -14,11 +14,15 @@ using CV19.Models;
 using DataPoint = CV19.Models.DataPoint;
 using OxyPlot.Series;
 using System.Security.Cryptography.X509Certificates;
+using System.Collections.ObjectModel;
+using CV19.Models.Decanat;
 
 namespace CV19.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+        //-----------------------------------------------------------------------------------------------
+        public ObservableCollection<Group> Groups { get; }
         #region выбор вкладки
         /// <summary>   Номер выбранной вкладки     /// </summary>
         private int _SelectedPageIndex;
@@ -59,6 +63,7 @@ namespace CV19.ViewModels
         private string _Status = "Готов!";
         public string Status { get => _Status; set => Set(ref _Status, value); }
         #endregion
+        //====================================================================================================
         #region Команды
         #region CloseApplicationCommand
         public ICommand CloseApplicationCommand { get; }
@@ -78,11 +83,12 @@ namespace CV19.ViewModels
         }
 
         #endregion
+        //=====================================================================================================
         public MainWindowViewModel()
         {
             #region Команды
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
-            ChangeTabIndexCommand=new LambdaCommand(OnChangeTabIndexCommandExecuted, CanChangeTabIndexCommandExecute);
+            ChangeTabIndexCommand = new LambdaCommand(OnChangeTabIndexCommandExecuted, CanChangeTabIndexCommandExecute);
 
             #endregion
             //var data_points = new List<DataPoint>((int)(360 / 0.1));
@@ -98,10 +104,30 @@ namespace CV19.ViewModels
                 const double to_rad = Math.PI / 180;
                 var y = Math.Sin(x * to_rad);
                 //data_points.Add(new DataPoint { XValue = x, YValue = y });
-               line1.Points.Add(new OxyPlot.DataPoint(x, y));   
+                line1.Points.Add(new OxyPlot.DataPoint(x, y));
             }
-           MyModel.Series.Add(line1);
+            MyModel.Series.Add(line1);
             //TestDataPoints = data_points;
+
+            var student_index = 1;
+
+            var students = Enumerable.Range(1, 10).Select(i => new Student
+            {
+                Name= $"Name{student_index}",
+                Surname=$"Surname{student_index}",
+                Patronymic= $"Patronymic{student_index++}",
+                Birthday =  DateTime.Now,
+                Rating = 0
+                
+            });
+            var groups = Enumerable.Range(1, 20).Select(i => new Group
+            { 
+                Name = $"Группа{i}",
+            Students = new ObservableCollection<Student>(students)
+            }) ;
+
+            Groups = new ObservableCollection<Group>(groups);
+              
         }
         public PlotModel MyModel { get; private set; }
     }

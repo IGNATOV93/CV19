@@ -128,6 +128,7 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\CountryInfo.cs" />
     <Compile Include="Models\DataPoint.cs" />
+    <Compile Include="Models\Decanat\Student.cs" />
     <Compile Include="Models\ProvinceInfo.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
