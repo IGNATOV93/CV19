@@ -71,7 +71,10 @@
                         <ListBox ItemsSource="{Binding Groups}" DisplayMemberPath="Name"/>
                     </GroupBox>
                     <GroupBox Grid.Column="2" Header="Студенты">
-                        
+                        <DataGrid>
+
+                        </DataGrid>
+
                     </GroupBox>
                 </Grid>
                
