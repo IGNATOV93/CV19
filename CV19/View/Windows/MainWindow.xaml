@@ -68,9 +68,11 @@
                     </Grid.ColumnDefinitions>
                     <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"  HorizontalAlignment="Stretch"/>
                     <GroupBox Grid.Column="0" Header="Группы">
-                        <ListBox ItemsSource="{Binding Groups}" DisplayMemberPath="Name"/>
+                        <ListBox ItemsSource="{Binding Groups}" DisplayMemberPath="Name"
+                                 SelectedItem="{Binding SelectedGroup}"
+                                 />
                     </GroupBox>
-                    <GroupBox Grid.Column="2" Header="Студенты">
+                    <GroupBox Grid.Column="2" Header="{Binding SelectedGroup.Name,FallbackValue='Студенты',TargetNullValue='Группа не выбрана'}">
                         <DataGrid>
 
                         </DataGrid>
