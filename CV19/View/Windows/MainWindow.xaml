@@ -9,7 +9,7 @@
         xmlns:vm="clr-namespace:CV19.ViewModels"
         xmlns:decanat="clr-namespace:CV19.Models.Decanat"
         xmlns:local="clr-namespace:CV19"
-        
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="{Binding Title}" 
         Height="450" Width="800">
     <Window.InputBindings>
@@ -61,18 +61,41 @@
         <TabControl SelectedIndex="{Binding SelectedPageIndex}">
              <TabItem Header="Разнородные данные" Height="20" VerticalAlignment="Top">
                 <Grid>
+                    <Grid.Resources>
+                        
+                    </Grid.Resources>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
+                   <GroupBox>
+                        <GroupBox.Header>
+                            <TextBlock Text="Элементы"/>
+                        </GroupBox.Header>
+                    
+                        <GroupBox.Resources>
+                            <DataTemplate DataType="{x:Type decanat:Group}">
+                                <TextBlock Text="{Binding Name,StringFormat=Группа {0}}"/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type decanat:Student}">
+                                <TextBlock Text="{Binding Name,StringFormat=Студент {0}}"/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type sys:String}">
+                                <TextBlock>
+                                <Run Foreground="Red" FontWeight="Bold"> Строка : </Run> <TextBlock Text="{Binding}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type sys:Int32}">
+                                <TextBlock>
+                                <Run Foreground="Blue" FontWeight="Bold">Число :</Run><TextBlock Text="{Binding}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GroupBox.Resources>
+                    
                     <ListBox ItemsSource="{Binding CompositeCollection}" 
-                             SelectedItem="{Binding SelectedCompositeValue}">
-                        <ListBox.ItemTemplate>
-                          <DataTemplate>
-                            <TextBlock Text="{Binding}"/>
-                          </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                             SelectedItem="{Binding SelectedCompositeValue}"/>
+
+                    </GroupBox>
                     <GroupBox Header="Выбранный элемент" Grid.Column="1">
                         <ContentControl Content="{Binding SelectedCompositeValue}"/>
                     </GroupBox>
