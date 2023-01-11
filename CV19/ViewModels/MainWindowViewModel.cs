@@ -16,6 +16,8 @@ using OxyPlot.Series;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections.ObjectModel;
 using CV19.Models.Decanat;
+using System.Text.RegularExpressions;
+using Group = CV19.Models.Decanat.Group;
 
 namespace CV19.ViewModels
 {
@@ -91,6 +93,7 @@ namespace CV19.ViewModels
         }
 
         #endregion
+        #region ChangeTabIndexCommand
         public ICommand ChangeTabIndexCommand { get; }
         private bool CanChangeTabIndexCommandExecute(object p) => _SelectedPageIndex >= 0;
         private void OnChangeTabIndexCommandExecuted(object p)
@@ -98,7 +101,33 @@ namespace CV19.ViewModels
             if(p is null) return;
             SelectedPageIndex+=Convert.ToInt32(p);
         }
+        #endregion
+        #region  CreateGroupCommand
+        public ICommand CreateGroupCommand { get; }
 
+        private bool CreateGroupCommandExecute(object p) => true;
+        private void OnCreateGroupCommandExecuted(object p)
+        {
+            var group_max_index = Groups.Count + 1;
+            var new_group = new Group
+            {
+                Name = $"Группа {group_max_index}",
+                Students = new ObservableCollection<Student>()
+            };
+            Groups.Add(new_group);
+        }
+        #endregion
+        #region DeleteGroupCommand
+        public ICommand DeleteGroupCommand { get; }
+
+        private bool CanDeleteGroupCommmandExecute(object p) => p is Group group && Groups.Contains(group);
+
+        private void OnDeleteGroupCommandExecuted(object p)
+        {
+            if (!(p is Group group)) return;
+            Groups.Remove(group);
+        }
+        #endregion
         #endregion
         //=====================================================================================================
         public MainWindowViewModel()
