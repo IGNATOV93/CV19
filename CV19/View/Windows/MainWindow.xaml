@@ -72,7 +72,6 @@
                         <GroupBox.Header>
                             <TextBlock Text="Элементы"/>
                         </GroupBox.Header>
-                    
                         <GroupBox.Resources>
                             <DataTemplate DataType="{x:Type decanat:Group}">
                                 <TextBlock Text="{Binding Name,StringFormat=Группа {0}}"/>
@@ -96,7 +95,43 @@
                              SelectedItem="{Binding SelectedCompositeValue}"/>
 
                     </GroupBox>
-                    <GroupBox Header="Выбранный элемент" Grid.Column="1">
+                    <GroupBox Grid.Column="1" >
+                        <GroupBox.Header>
+                            <TextBlock>
+                                Выбранный элемент
+                            </TextBlock>
+                        </GroupBox.Header>
+                        <GroupBox.Resources>
+                            <DataTemplate DataType="{x:Type decanat:Group}">
+                                <TextBlock Text="{Binding Name,StringFormat=Группа {0}}"
+                                         HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="30"
+                                           />
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type decanat:Student}">
+                                <TextBlock Text="{Binding Name,StringFormat=Студент {0}}"
+                                         HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="30"/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type sys:String}">
+                                <TextBlock
+                                   HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="30" >
+                                <Run Foreground="Red" FontWeight="Bold"> Строка : </Run> <TextBlock Text="{Binding}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type sys:Int32}">
+                                <TextBlock
+                                   HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="30" >
+                                <Run Foreground="Blue" FontWeight="Bold">Число :</Run><TextBlock Text="{Binding}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GroupBox.Resources>
                         <ContentControl Content="{Binding SelectedCompositeValue}"/>
                     </GroupBox>
                 </Grid>
