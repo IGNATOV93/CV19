@@ -105,7 +105,7 @@ namespace CV19.ViewModels
         #region  CreateGroupCommand
         public ICommand CreateGroupCommand { get; }
 
-        private bool CreateGroupCommandExecute(object p) => true;
+        private bool CanCreateGroupCommandExecute(object p) => true;
         private void OnCreateGroupCommandExecuted(object p)
         {
             var group_max_index = Groups.Count + 1;
@@ -125,7 +125,11 @@ namespace CV19.ViewModels
         private void OnDeleteGroupCommandExecuted(object p)
         {
             if (!(p is Group group)) return;
+            var group_index= Groups.IndexOf(group);
             Groups.Remove(group);
+            if (group_index<Groups.Count)
+               SelectedGroup = Groups[group_index];
+           
         }
         #endregion
         #endregion
@@ -135,6 +139,8 @@ namespace CV19.ViewModels
             #region Команды
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
             ChangeTabIndexCommand = new LambdaCommand(OnChangeTabIndexCommandExecuted, CanChangeTabIndexCommandExecute);
+            CreateGroupCommand = new LambdaCommand(OnCreateGroupCommandExecuted, CanCreateGroupCommandExecute);
+            DeleteGroupCommand = new LambdaCommand(OnDeleteGroupCommandExecuted, CanDeleteGroupCommmandExecute);
 
             #endregion
             //var data_points = new List<DataPoint>((int)(360 / 0.1));
