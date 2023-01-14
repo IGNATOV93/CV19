@@ -20,6 +20,7 @@
     </Window.DataContext>
     <Window.Resources>
         <cmd:CloseApplicationCommand x:Key="CloseApplicationCommand"/>
+        
     </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -59,16 +60,16 @@
 
         </StatusBar>
         <TabControl SelectedIndex="{Binding SelectedPageIndex}">
-             <TabItem Header="Разнородные данные" Height="20" VerticalAlignment="Top">
+            <TabItem Header="Разнородные данные" Height="20" VerticalAlignment="Top">
                 <Grid>
                     <Grid.Resources>
-                        
+
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                   <GroupBox>
+                    <GroupBox>
                         <GroupBox.Header>
                             <TextBlock Text="Элементы"/>
                         </GroupBox.Header>
@@ -90,8 +91,8 @@
                                 </TextBlock>
                             </DataTemplate>
                         </GroupBox.Resources>
-                    
-                    <ListBox ItemsSource="{Binding CompositeCollection}" 
+
+                        <ListBox ItemsSource="{Binding CompositeCollection}" 
                              SelectedItem="{Binding SelectedCompositeValue}"/>
 
                     </GroupBox>
@@ -135,7 +136,7 @@
                         <ContentControl Content="{Binding SelectedCompositeValue}"/>
                     </GroupBox>
                 </Grid>
-             </TabItem>
+            </TabItem>
             <TabItem Header="Студенты">
                 <Grid>
 
@@ -148,8 +149,15 @@
                     <GroupBox Grid.Column="0" Header="Группы">
                         <DockPanel>
                             <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0.3">
-                                <Button Content="Добавить" Margin="3 0" Padding="3.5"  Command="{Binding CreateGroupCommand}"/>
-                                <Button Content="Удалить" Margin="3 0" Padding="3.5"  Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
+                                <UniformGrid.Resources>
+                                    <Style  TargetType="Button">
+                                        <Setter Property="Margin" Value="3 0"/>
+                                        <Setter Property="Padding" Value="3.5"/>
+                                        <Setter Property="Background" Value="YellowGreen"/>
+                                    </Style>
+                                </UniformGrid.Resources>
+                                <Button Content="Добавить" Style="{StaticResource PrimaryBtn}"  Command="{Binding CreateGroupCommand}"/>
+                                <Button Content="Удалить"  Style="{StaticResource DangerBth}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                             </UniformGrid>
                             <ListBox ItemsSource="{Binding Groups}" SelectedIndex="1"      
                                  SelectedItem="{Binding SelectedGroup}">
@@ -178,7 +186,7 @@
                                 <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" IsReadOnly="True"/>
                                 <!-- <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday,StringFormat=dd.mm.yyyy}" />-->
                                 <DataGridTemplateColumn Header="Дата рождения">
-                                    
+
                                     <!--<DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate DataType="decanat:Student">
                                             <DatePicker SelectedDate="{Binding Birthday}"/>
@@ -198,22 +206,25 @@
                                 </DataGridTemplateColumn>
                                 <!--<DataGridTextColumn Header="Группа" Binding="{Binding DataContext.SelectedGroup.Name, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>-->
                                 <DataGridTextColumn Header="Заметки" Binding="{Binding Description}" Width="*" />
-                                
+
                             </DataGrid.Columns>
-                        
+
                         </DataGrid>
 
                     </GroupBox>
                 </Grid>
-               
+
 
 
             </TabItem>
-            
+
             <TabItem Header="График" Margin="7,-2,-2,0">
                 <oxy:PlotView Model="{Binding MyModel}"/>
             </TabItem>
-            <TabItem Header="Вкладка 3"/>
+            <TabItem Header="Вкладка 3">
+                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Content="123" Margin="15" Padding="14"
+                        Style="{StaticResource DangerBth}"/>
+            </TabItem>
             <TabItem Header="Вкладка 4"/>
         </TabControl>
     </DockPanel>

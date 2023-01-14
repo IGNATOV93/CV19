@@ -4,6 +4,16 @@
              xmlns:local="clr-namespace:CV19"
              StartupUri="View/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="DarkGray"></Setter>
+        </Style>
+        <Style x:Key="PrimaryBtn" TargetType="Button">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+        <Style x:Key="DangerBth" TargetType="Button">
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
     </Application.Resources>
 </Application>
