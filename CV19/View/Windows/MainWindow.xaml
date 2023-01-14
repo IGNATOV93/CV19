@@ -67,10 +67,11 @@
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="156"/>
-                        <ColumnDefinition Width="94"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="84"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Grid.ColumnSpan="2">
+                    <GroupBox Grid.ColumnSpan="3">
                         <GroupBox.Header>
                             <TextBlock Text="Элементы"/>
                         </GroupBox.Header>
@@ -80,15 +81,13 @@
                                     <ResourceDictionary Source="../../Resources\DataTemplates\CompositeListItemsDataTemplates.xaml"></ResourceDictionary>
                                 </ResourceDictionary.MergedDictionaries>
                             </ResourceDictionary>
-
-
                         </GroupBox.Resources>
 
                         <ListBox ItemsSource="{Binding CompositeCollection}" 
                              SelectedItem="{Binding SelectedCompositeValue}"/>
 
                     </GroupBox>
-                    <GroupBox Grid.Column="2" >
+                    <GroupBox Grid.Column="3" >
                         <GroupBox.Header>
                             <TextBlock>
                                 Выбранный элемент
@@ -124,7 +123,17 @@
                                         <Setter Property="Background" Value="YellowGreen"/>
                                     </Style>
                                 </UniformGrid.Resources>
-                                <Button Content="Добавить" Style="{StaticResource PrimaryBtn}"  Command="{Binding CreateGroupCommand}"/>
+                                <Button  Style="{StaticResource PrimaryBtn}"  Command="{Binding CreateGroupCommand}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:ImageAwesome Height="12" Icon="Check" Foreground="LightGreen" Margin="0 0 3 0">
+                                            <fa:ImageAwesome.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </fa:ImageAwesome.Effect>
+                                        </fa:ImageAwesome>
+
+                                    <TextBlock Text="Добавить"/>
+                                    </StackPanel>
+                                </Button>
                                 <Button Content="Удалить"  Style="{StaticResource DangerBth}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                             </UniformGrid>
                             <ListBox ItemsSource="{Binding Groups}" SelectedIndex="1"      
@@ -191,7 +200,7 @@
             </TabItem>
             <TabItem Header="Вкладка 3">
                 <Button VerticalAlignment="Top" HorizontalAlignment="Left" Content="123" Margin="15" Padding="14"
-                        Style="{StaticResource DangerBth}"/>
+                        Style="{StaticResource CustomButtonStyle}"/>
             </TabItem>
             <TabItem Header="Вкладка 4"/>
         </TabControl>
