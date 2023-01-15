@@ -75,15 +75,17 @@
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="{TemplateBinding BorderThickness}" 
                                 SnapsToDevicePixels="true">
-            <DockPanel>
-                <fa:ImageAwesome Height="12" Icon="Check" Foreground="Aquamarine"/>
+            <DockPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                       Margin="{TemplateBinding Padding}">
+                <fa:ImageAwesome Height="12" Icon="Check" Foreground="Aquamarine" Margin="0 0 3 0 "/>
                     <ContentPresenter x:Name="contentPresenter" 
                                   Focusable="False" 
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                  Margin="{TemplateBinding Padding}" 
+                                   
+                                   
                                   RecognizesAccessKey="True" 
                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                  />
             </DockPanel>
         </Border>
         <ControlTemplate.Triggers>

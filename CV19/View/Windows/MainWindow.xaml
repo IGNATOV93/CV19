@@ -131,7 +131,7 @@
                                             </fa:ImageAwesome.Effect>
                                         </fa:ImageAwesome>
 
-                                    <TextBlock Text="Добавить"/>
+                                        <TextBlock Text="Добавить"/>
                                     </StackPanel>
                                 </Button>
                                 <Button Content="Удалить"  Style="{StaticResource DangerBth}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
@@ -199,8 +199,8 @@
                 <oxy:PlotView Model="{Binding MyModel}"/>
             </TabItem>
             <TabItem Header="Вкладка 3">
-                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Content="123" Margin="15" Padding="14"
-                        Style="{StaticResource CheckButtonStyle}"/>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Content="123" Margin="15,15,0,15" Padding="14"
+                        Style="{StaticResource CheckButtonStyle}" Width="237"/>
             </TabItem>
             <TabItem Header="Вкладка 4"/>
         </TabControl>
