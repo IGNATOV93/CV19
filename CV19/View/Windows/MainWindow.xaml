@@ -117,20 +117,10 @@
                         <DockPanel>
                             <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0.3">
                                 <UniformGrid.Resources>
-                                    <Style  TargetType="Button">
-                                        <Setter Property="Margin" Value="3 0"/>
-                                        <Setter Property="Padding" Value="3.5"/>
-                                        <Setter Property="Background" Value="YellowGreen"/>
-                                    </Style>
+                                    
                                 </UniformGrid.Resources>
-                                <Button  Style="{StaticResource CheckButtonStyle}"  Command="{Binding CreateGroupCommand}">
-                                    <StackPanel Orientation="Horizontal">
-                                        
-
-                                        <TextBlock Text="Добавить"/>
-                                    </StackPanel>
-                                </Button>
-                                <Button Content="Удалить"  Style="{StaticResource RemoveButtonStyle}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
+                                <Button Content="Добавить" Padding="0,7" Style="{StaticResource CheckButtonStyle}"  Command="{Binding CreateGroupCommand}"/>
+                                <Button Content="Удалить" Padding="0,7" Style="{StaticResource RemoveButtonStyle}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                             </UniformGrid>
                             <ListBox ItemsSource="{Binding Groups}" SelectedIndex="1"      
                                  SelectedItem="{Binding SelectedGroup}">
