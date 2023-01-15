@@ -200,7 +200,7 @@
             </TabItem>
             <TabItem Header="Вкладка 3">
                 <Button VerticalAlignment="Top" HorizontalAlignment="Left" Content="123" Margin="15" Padding="14"
-                        Style="{StaticResource CustomButtonStyle}"/>
+                        Style="{StaticResource CheckButtonStyle}"/>
             </TabItem>
             <TabItem Header="Вкладка 4"/>
         </TabControl>
