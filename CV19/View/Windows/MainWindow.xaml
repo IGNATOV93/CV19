@@ -123,18 +123,14 @@
                                         <Setter Property="Background" Value="YellowGreen"/>
                                     </Style>
                                 </UniformGrid.Resources>
-                                <Button  Style="{StaticResource PrimaryBtn}"  Command="{Binding CreateGroupCommand}">
+                                <Button  Style="{StaticResource CheckButtonStyle}"  Command="{Binding CreateGroupCommand}">
                                     <StackPanel Orientation="Horizontal">
-                                        <fa:ImageAwesome Height="12" Icon="Check" Foreground="LightGreen" Margin="0 0 3 0">
-                                            <fa:ImageAwesome.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </fa:ImageAwesome.Effect>
-                                        </fa:ImageAwesome>
+                                        
 
                                         <TextBlock Text="Добавить"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Content="Удалить"  Style="{StaticResource DangerBth}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
+                                <Button Content="Удалить"  Style="{StaticResource RemoveButtonStyle}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                             </UniformGrid>
                             <ListBox ItemsSource="{Binding Groups}" SelectedIndex="1"      
                                  SelectedItem="{Binding SelectedGroup}">

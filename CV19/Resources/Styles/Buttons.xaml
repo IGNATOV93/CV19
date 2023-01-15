@@ -67,8 +67,9 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+    <DropShadowEffect x:Key="ShadowDepth1" ShadowDepth="1" />
 
-    <ControlTemplate x:Key="CheckButtonTemplate" TargetType="{x:Type Button}">
+        <ControlTemplate x:Key="CheckButtonTemplate" TargetType="{x:Type Button}">
         <Border x:Name="border" 
                 CornerRadius="3"
                                 Background="{TemplateBinding Background}" 
@@ -78,7 +79,7 @@
             <DockPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                        Margin="{TemplateBinding Padding}">
-                <fa:ImageAwesome Height="12" Icon="Check" Foreground="Aquamarine" Margin="0 0 3 0 "/>
+                <fa:ImageAwesome Height="12" Icon="Check" Foreground="Aquamarine" Margin="0 0 3 0 " Effect="{StaticResource ShadowDepth1}"/>
                     <ContentPresenter x:Name="contentPresenter" 
                                   Focusable="False" 
                                    
@@ -95,13 +96,14 @@
                 <Setter Property="FontWeight" Value="Bold"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" TargetName="border" Value="DarkBlue"/>
-                <Setter Property="BorderBrush" TargetName="border" Value="White"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" TargetName="border" Value="Blue"/>
+                
+               
             </Trigger>
             <Trigger Property="IsPressed" Value="true">
-                <Setter Property="Background" TargetName="border" Value="DarkBlue"/>
-
+                <Setter Property="Background" TargetName="border" Value="WhiteSmoke"/>
+                <Setter Property="Foreground" Value="DarkRed"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="DarkRed"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>-->
@@ -123,7 +125,9 @@
             <DockPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                        Margin="{TemplateBinding Padding}">
-                <fa:ImageAwesome Height="12" Icon="Times" Foreground="Red" Margin="0 0 3 0 "/>
+                <fa:ImageAwesome x:Name="Icon" Height="12" Icon="Times" 
+                                 Foreground="PaleVioletRed"
+                                 Margin="0 0 3 0 " Effect="{StaticResource ShadowDepth1}"/>
                 <ContentPresenter x:Name="contentPresenter" 
                                   Focusable="False" 
                                    
@@ -134,18 +138,21 @@
             </DockPanel>
         </Border>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsDefaulted" Value="true">
-
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Trigger>
+        
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" TargetName="border" Value="DarkBlue"/>
-                <Setter Property="BorderBrush" TargetName="border" Value="White"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" TargetName="border" Value="White"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="Red"/>
+                <Setter Property="Foreground" Value="Red"/>
+<Setter TargetName="Icon" Property="Foreground" Value="Red"/>
+    
+
+                        
             </Trigger>
             <Trigger Property="IsPressed" Value="true">
-                <Setter Property="Background" TargetName="border" Value="DarkBlue"/>
+                <Setter Property="Background" TargetName="border" Value="WhiteSmoke"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="DarkRed"/>
+                <Setter Property="Foreground" Value="DarkRed"/>
+                <Setter TargetName="Icon" Property="Foreground" Value="OrangeRed"/>
 
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
@@ -184,9 +191,9 @@
 
     <Style x:Key="RemoveButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Background" Value="Red"/>
+        <Setter Property="BorderBrush" Value="WhiteSmoke"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
