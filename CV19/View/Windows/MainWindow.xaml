@@ -185,8 +185,56 @@
                 <oxy:PlotView Model="{Binding MyModel}"/>
             </TabItem>
             <TabItem Header="Вкладка 3">
-                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Content="123" Margin="15,15,0,15" Padding="14"
-                        Style="{StaticResource CheckButtonStyle}" Width="237"/>
+                <Button  VerticalAlignment="Top" 
+                         HorizontalAlignment="Left" 
+                         Content="123" 
+                         Style="{StaticResource CustomButtonStyle}"
+                         Margin="20 40" 
+                         Padding="14"
+                        
+                        Width="237"
+                         RenderTransformOrigin="0.5,0.5" >
+                    <Button.Background>
+<SolidColorBrush Color="WhiteSmoke" x:Name="ButtonBrush"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <RotateTransform Angle="0" x:Name="ButtonRotate"/>
+                    </Button.RenderTransform>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click"  >
+                           <BeginStoryboard>
+                              <Storyboard>
+                                  <DoubleAnimation Storyboard.TargetName="ButtonRotate"
+                                                   Storyboard.TargetProperty="Angle"
+                                                   From="0" To="180"
+                                                   Duration="0:0:0.5"
+                                                   AutoReverse="True"/>
+                              </Storyboard>
+                           </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="ButtonBrush"
+                                                    Storyboard.TargetProperty="Color"
+                                                    Duration="0:0:0.1"
+                                                    To="Red"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="ButtonBrush"
+                                                    Storyboard.TargetProperty="Color"
+                                                    Duration="0:0:3"
+                                                    To="White"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                    </Button.Triggers>
+                </Button>
             </TabItem>
             <TabItem Header="Вкладка 4"/>
         </TabControl>

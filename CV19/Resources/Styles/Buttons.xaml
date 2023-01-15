@@ -52,7 +52,7 @@
                 <Setter Property="FontWeight" Value="Bold"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" TargetName="border" Value="DarkBlue"/>
+               <!-- <Setter Property="Background" TargetName="border" Value="DarkBlue"/>-->
                 <Setter Property="BorderBrush" TargetName="border" Value="White"/>
                 <Setter Property="Foreground" Value="White"/>
             </Trigger>
