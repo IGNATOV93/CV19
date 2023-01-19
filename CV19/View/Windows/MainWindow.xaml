@@ -63,7 +63,7 @@
                         <DockPanel>
                             <DockPanel.Resources>
                                 <CollectionViewSource 
-                     x:Key="GroupCollection" 
+                     x:Key="GroupsCollection" 
                      x:Name="GroupsCollection"
                      Source="{Binding Groups}"
                         Filter="GroupCollection_OnFilter"            
@@ -79,7 +79,7 @@
                                 <Button Content="Добавить" Padding="0,7" Style="{StaticResource CheckButtonStyle}"  Command="{Binding CreateGroupCommand}"/>
                                 <Button Content="Удалить" Padding="0,7" Style="{StaticResource RemoveButtonStyle}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                             </UniformGrid>
-                            <ListBox ItemsSource="{Binding Source={StaticResource GroupCollection}}" SelectedIndex="1"      
+                            <ListBox ItemsSource="{Binding Source={StaticResource GroupsCollection}}" SelectedIndex="1"      
                                  SelectedItem="{Binding SelectedGroup}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate DataType="decanat:Group">

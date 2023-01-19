@@ -34,8 +34,8 @@ namespace CV19
 
             var filter_text = GroupFilterText.Text;
             if(filter_text.Length==0) return;
-            if(group.Name.Contains(filter_text,StringComparison.OrdinalIgnoreCase)) return;
-            if(group.Description != null && group.Description.Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
+            if(group.Name.Contains(filter_text)) return;
+            if(group.Description != null && group.Description.Contains(filter_text)) return;
             e.Accepted = false;
         }
 
