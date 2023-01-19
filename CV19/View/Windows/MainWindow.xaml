@@ -49,17 +49,42 @@
 
         </StatusBar>
         <TabControl SelectedIndex="{Binding SelectedPageIndex}">
-            
+            <TabItem Header="Тестирование виртуализации">
+                <Grid>
+                    <TextBlock Text="{Binding Source={x:Static local:App.IsDesingMode}}"/>
+                    <ListBox HorizontalAlignment="Left" Width="200" Margin="30" 
+                             ItemsSource="{Binding TeStudents}" >
+<ListBox.ItemContainerStyle>
+    <Style TargetType="ListBoxItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
+</ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="decanat:Student">
+                                <Border BorderBrush="Blue" BorderThickness="1" CornerRadius="3" Padding="3">
+<StackPanel>
+   <TextBlock Text="{Binding Surname}" ToolTip="{Binding Name}"/>
+   <TextBlock Text="{Binding Name}" ToolTip="{Binding Name}"/>
+   <TextBlock Text="{Binding Patronymic,TargetNullValue=--}" ToolTip="{Binding Name}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                    </ListBox>
+                </Grid>
+            </TabItem>
             <TabItem Header="Студенты">
                 <Grid>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="63"/>
+                        <ColumnDefinition Width="187"/>
                         <ColumnDefinition  Width="Auto"/>
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"  HorizontalAlignment="Stretch"/>
-                    <GroupBox Grid.Column="0" Header="Группы">
+                    <GridSplitter Grid.Column="2" ShowsPreview="False" Width="3"  HorizontalAlignment="Stretch"/>
+                    <GroupBox Grid.Column="0" Header="Группы" Grid.ColumnSpan="2">
                         <DockPanel>
                             <DockPanel.Resources>
                                 <CollectionViewSource 
@@ -70,12 +95,12 @@
                                     />
                             </DockPanel.Resources>
                             <DockPanel DockPanel.Dock="Top" Margin="0 0 0 3">
-                              <!--<TextBlock Text="Фильтр :"/>-->
-                              <fa:ImageAwesome Height="12" Icon="Search" Margin="  3 0 "/>
-                              <TextBox Name="GroupFilterText" TextChanged="OnGroupsFilterTextChanged"/>
-                          </DockPanel>
-                        
-                        <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0.3">
+                                <!--<TextBlock Text="Фильтр :"/>-->
+                                <fa:ImageAwesome Height="12" Icon="Search" Margin="  3 0 "/>
+                                <TextBox Name="GroupFilterText" TextChanged="OnGroupsFilterTextChanged"/>
+                            </DockPanel>
+
+                            <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0.3">
                                 <Button Content="Добавить" Padding="0,7" Style="{StaticResource CheckButtonStyle}"  Command="{Binding CreateGroupCommand}"/>
                                 <Button Content="Удалить" Padding="0,7" Style="{StaticResource RemoveButtonStyle}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                             </UniformGrid>
@@ -90,24 +115,24 @@
                                         <VirtualizingStackPanel />
                                     </ItemsPanelTemplate>
                                 </ListBox.ItemsPanel>
-                                    <ListBox.ItemTemplate>
-                                    
-                                        <DataTemplate DataType="decanat:Group">
+                                <ListBox.ItemTemplate>
+
+                                    <DataTemplate DataType="decanat:Group">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}" Name="TextView"/>
                                             <TextBlock Text="{Binding Students.Count,StringFormat= [Студентов :{0}]}" Margin="3,0,0,0"/>
                                         </StackPanel>
                                         <DataTemplate.Triggers>
-                                           <DataTrigger Binding="{Binding Students.Count}" Value="0">
+                                            <DataTrigger Binding="{Binding Students.Count}" Value="0">
                                                 <Setter TargetName="TextView" Property="Foreground" Value="Red"/>
-                                           </DataTrigger>
+                                            </DataTrigger>
                                         </DataTemplate.Triggers>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
                         </DockPanel>
                     </GroupBox>
-                    <GroupBox Grid.Column="2" Header="{Binding SelectedGroup.Name,FallbackValue='Студенты',TargetNullValue='Группа не выбрана'}">
+                    <GroupBox Grid.Column="3" Header="{Binding SelectedGroup.Name,FallbackValue='Студенты',TargetNullValue='Группа не выбрана'}">
                         <DockPanel>
                             <DockPanel DockPanel.Dock="Top" Margin="0 3">
                                 <fa:ImageAwesome Height="12" Icon="Search" Margin="  3 0 "/>
@@ -156,7 +181,7 @@
             <TabItem Header="График" Visibility="Collapsed" Margin="7,-2,-2,0">
                 <oxy:PlotView Model="{Binding MyModel}"/>
             </TabItem>
-           
+
         </TabControl>
     </DockPanel>
 </Window>

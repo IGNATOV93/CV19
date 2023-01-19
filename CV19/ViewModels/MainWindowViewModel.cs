@@ -82,6 +82,14 @@ namespace CV19.ViewModels
         private string _Status = "Готов!";
         public string Status { get => _Status; set => Set(ref _Status, value); }
         #endregion
+
+        public IEnumerable<Student> TeStudents => Enumerable.Range(1, App.IsDesingMode ? 10: 100_000)
+            .Select(i => new Student
+            {
+              Name = $"Имя {i}",
+              Surname = $"Фамилия{i}"
+            });
+             
         //====================================================================================================
         #region Команды
         #region CloseApplicationCommand
