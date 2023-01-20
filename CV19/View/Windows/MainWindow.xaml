@@ -49,18 +49,19 @@
 
         </StatusBar>
         <TabControl SelectedIndex="{Binding SelectedPageIndex}">
-            <TabItem Header="Тестирование виртуализации">
+            <TabItem Header="Тестирование виртуализации" Visibility="Collapsed">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="219*"/>
+                        <ColumnDefinition Width="34*"/>
+                        <ColumnDefinition Width="185*"/>
                         <ColumnDefinition Width="575*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding Source={x:Static local:App.IsDesingMode}}" Grid.ColumnSpan="2"/>
+                    <TextBlock Text="{Binding Source={x:Static local:App.IsDesingMode}}" Grid.ColumnSpan="3"/>
                     <ListBox HorizontalAlignment="Left" Width="200" Margin="30,30,0,30" 
                              ItemsSource="{Binding TeStudents}" 
                              VirtualizingPanel.IsVirtualizing="True"
                              VirtualizingPanel.VirtualizationMode="Recycling"
-                             VirtualizingPanel.IsContainerVirtualizable="True" Grid.ColumnSpan="2"
+                             VirtualizingPanel.IsContainerVirtualizable="True" Grid.ColumnSpan="3"
                              >
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -152,20 +153,24 @@
                         <DockPanel>
                             <DockPanel DockPanel.Dock="Top" Margin="0 3">
                                 <fa:ImageAwesome Height="12" Icon="Search" Margin="  3 0 "/>
-                                <TextBox/>
+                                <TextBox Text="{Binding StudentFilterText,UpdateSourceTrigger=PropertyChanged}"/>
                             </DockPanel>
-                            <DataGrid ItemsSource="{Binding SelectedGroup.Students}" AutoGenerateColumns="False"
+                            <DataGrid ItemsSource="{Binding SelectedGroupStudents}" AutoGenerateColumns="False"
                                       CanUserAddRows="False"
                                       GridLinesVisibility="Vertical"
                                       VerticalGridLinesBrush="DarkGray"
                                       AlternatingRowBackground="LightGray"
-                                      EnableRowVirtualization="True"
-                            >
-                                <DataGrid.ItemsPanel>
+                                      EnableRowVirtualization="True">
+                                <!--<DataGrid.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <VirtualizingStackPanel></VirtualizingStackPanel>
                                     </ItemsPanelTemplate>
-                                </DataGrid.ItemsPanel>
+                                </DataGrid.ItemsPanel>-->
+                                <DataGrid.GroupStyle>
+                                    <GroupStyle >
+
+                                    </GroupStyle>
+                                </DataGrid.GroupStyle>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" IsReadOnly="True"/>
                                     <DataGridTextColumn Header="Имя" Binding="{Binding Name}" IsReadOnly="True"/>
