@@ -10,6 +10,8 @@
         xmlns:decanat="clr-namespace:CV19.Models.Decanat"
         xmlns:local="clr-namespace:CV19"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:cm="System.ComponentModel.SortDescrition"
+        xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         Title="{Binding Title}" 
         Height="450" Width="800">
     <Window.InputBindings>
@@ -108,8 +110,14 @@
                      x:Key="GroupsCollection" 
                      x:Name="GroupsCollection"
                      Source="{Binding Groups}"
-                        Filter="GroupCollection_OnFilter"            
-                                    />
+                        Filter="GroupCollection_OnFilter">
+                                    <CollectionViewSource.SortDescriptions>
+                                          <componentModel:SortDescription PropertyName="Name" Direction="Descending"/>
+                                    </CollectionViewSource.SortDescriptions>
+                                   <CollectionViewSource.GroupDescriptions>
+                                       <PropertyGroupDescription PropertyName="Sudents.Count"/>
+                                   </CollectionViewSource.GroupDescriptions>
+                                </CollectionViewSource >
                             </DockPanel.Resources>
                             <DockPanel DockPanel.Dock="Top" Margin="0 0 0 3">
                                 <!--<TextBlock Text="Фильтр :"/>-->
@@ -166,11 +174,11 @@
                                         <VirtualizingStackPanel></VirtualizingStackPanel>
                                     </ItemsPanelTemplate>
                                 </DataGrid.ItemsPanel>-->
-                                <DataGrid.GroupStyle>
+                                <!--<DataGrid.GroupStyle>
                                     <GroupStyle >
 
                                     </GroupStyle>
-                                </DataGrid.GroupStyle>
+                                </DataGrid.GroupStyle>-->
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" IsReadOnly="True"/>
                                     <DataGridTextColumn Header="Имя" Binding="{Binding Name}" IsReadOnly="True"/>

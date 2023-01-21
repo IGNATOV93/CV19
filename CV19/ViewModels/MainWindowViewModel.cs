@@ -249,7 +249,7 @@ namespace CV19.ViewModels
 
             _SelectedGroupStudents.Filter += OnStudentFiltred;
             //_SelectedGroupStudents.SortDescriptions.Add(new SortDescription("Name",ListSortDirection.Descending));
-            _SelectedGroupStudents.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
+            //_SelectedGroupStudents.GroupDescriptions.Add(new PropertyGroupDescription("Name"));
         }
 
        
