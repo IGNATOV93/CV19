@@ -141,7 +141,7 @@ namespace CV19.ViewModels
               Surname = $"Фамилия{i}"
             });
 
-        public DirectoryViewModel DiskRootDir { get; }= new DirectoryViewModel("с:\\");
+        public DirectoryViewModel DiskRootDir { get; }= new DirectoryViewModel("c:\\");
              
         //====================================================================================================
         #region Команды
