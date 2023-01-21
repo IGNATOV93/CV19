@@ -114,9 +114,9 @@
                                     <CollectionViewSource.SortDescriptions>
                                           <componentModel:SortDescription PropertyName="Name" Direction="Descending"/>
                                     </CollectionViewSource.SortDescriptions>
-                                   <CollectionViewSource.GroupDescriptions>
+                                   <!--<CollectionViewSource.GroupDescriptions>
                                        <PropertyGroupDescription PropertyName="Sudents.Count"/>
-                                   </CollectionViewSource.GroupDescriptions>
+                                   </CollectionViewSource.GroupDescriptions>-->
                                 </CollectionViewSource >
                             </DockPanel.Resources>
                             <DockPanel DockPanel.Dock="Top" Margin="0 0 0 3">
