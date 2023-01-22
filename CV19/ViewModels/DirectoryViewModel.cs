@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -13,15 +15,63 @@ namespace CV19.ViewModels
     {
         private readonly DirectoryInfo _DirectoryInfo;
 
-        public IEnumerable<DirectoryViewModel> SubDirectories=> _DirectoryInfo
-            .EnumerateDirectories()
-            .Select(dir_info => new DirectoryViewModel(dir_info.FullName));
+        public IEnumerable<DirectoryViewModel> SubDirectories
+        {
+            get
+            {
+                try
+                {
+                    return _DirectoryInfo
+                        .EnumerateDirectories()
+                        .Select(dir_info => new DirectoryViewModel(dir_info.FullName));
+                }
+                catch (UnauthorizedAccessException e)
+                {
+                    Debug.WriteLine(e.ToString());
+                }
+                return Enumerable.Empty<DirectoryViewModel>();  
+            }
+        }
+    
+            
+        
 
-        public IEnumerable<FileViewModel> Files => _DirectoryInfo
-            .EnumerateFiles()
-            .Select(file => new FileViewModel(file.FullName));
+        public IEnumerable<FileViewModel> Files {
+            get
+            {
+                try
+                {
+                    var files = _DirectoryInfo
+                        .EnumerateFiles()
+                        .Select(file => new FileViewModel(file.FullName));
+                    return files;
+                }
+                catch (UnauthorizedAccessException e)
+                {
+                    Debug.WriteLine(e.ToString());
+                    
+                }
 
-        public IEnumerable<object> DirectoryItems =>SubDirectories.Cast<object>().Concat(Files);
+                return Enumerable.Empty<FileViewModel>();
+            }
+        }
+
+        public IEnumerable<object> DirectoryItems
+        {
+            get
+            {
+                try
+                {
+                    return SubDirectories.Cast<object>().Concat(Files);
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.ToString());
+                    
+                }
+                return Enumerable.Empty<object>();  
+            }
+        }
 
         public string Name=> _DirectoryInfo.Name;
         public string Path => _DirectoryInfo.FullName;

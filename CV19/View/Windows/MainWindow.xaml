@@ -216,7 +216,45 @@
             <TabItem Header="График" Visibility="Collapsed" Margin="7,-2,-2,0">
                 <oxy:PlotView Model="{Binding MyModel}"/>
             </TabItem>
+            <TabItem Header="Файловая система">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                       <ColumnDefinition Width="250"/>
+                       <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Column="0" Header="Директории">
+                        <!--<ListBox ItemsSource="{Binding DiskRootDir.DirectoryItems}"
+                                SelectedItem="{Binding SelectedDirectory}"
+                                SelectedIndex="0">
+                            <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="vm:DirectoryViewModel">
+                                       <TextBlock Text="{Binding Name}" ToolTip="{Binding CreationTime}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                        </ListBox>-->
+                       <TreeView ItemsSource="{Binding DiskRootDir.DirectoryItems}">
+                         <TreeView.ItemTemplate>
+                             <!--<DataTemplate DataType="vm:DirectoryViewModel">
+                                 <TextBlock Text="{Binding Name}" ToolTip="{Binding CreationTime}"/>
+                             </DataTemplate>-->
+                              <HierarchicalDataTemplate DataType="vm:DirectoryViewModel"
+                                                        ItemsSource="{Binding DirectoryItems}">
+                                <StackPanel Orientation="Horizontal">
+                                       <fa:ImageAwesome Height="12" Icon="FolderOutline" Foreground="GreenYellow"/>
+                                       <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
+                              </HierarchicalDataTemplate>
+                         </TreeView.ItemTemplate>
+                       </TreeView>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Header="Файлы" >
+                        <ListBox SelectedItem="{Binding SelectedDirectory.Files, Mode=OneWay}">
 
+                        </ListBox>
+
+                    </GroupBox>
+                </Grid>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>
