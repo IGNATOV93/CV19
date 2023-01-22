@@ -232,20 +232,22 @@
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                         </ListBox>-->
-                       <TreeView ItemsSource="{Binding DiskRootDir.DirectoryItems}">
-                         <TreeView.ItemTemplate>
-                             <!--<DataTemplate DataType="vm:DirectoryViewModel">
-                                 <TextBlock Text="{Binding Name}" ToolTip="{Binding CreationTime}"/>
-                             </DataTemplate>-->
-                              <HierarchicalDataTemplate DataType="vm:DirectoryViewModel"
-                                                        ItemsSource="{Binding DirectoryItems}">
+                        <GroupBox.Resources>
+                            <HierarchicalDataTemplate DataType="{x:Type vm:DirectoryViewModel}"
+                                                      ItemsSource="{Binding DirectoryItems}">
                                 <StackPanel Orientation="Horizontal">
-                                       <fa:ImageAwesome Height="12" Icon="FolderOutline" Foreground="GreenYellow"/>
-                                       <TextBlock Text="{Binding Name}"/>
+                                    <fa:ImageAwesome Height="12" Icon="FolderOutline" Foreground="GreenYellow" Margin="0 0 3 0"/>
+                                    <TextBlock Text="{Binding Name}"/>
                                 </StackPanel>
-                              </HierarchicalDataTemplate>
-                         </TreeView.ItemTemplate>
-                       </TreeView>
+                            </HierarchicalDataTemplate>
+                            <DataTemplate DataType="{x:Type vm:FileViewModel}">
+                               <StackPanel Orientation="Horizontal" ToolTip="{Binding CreationTime}">
+                                   <fa:ImageAwesome Height="12" Icon="File" Foreground="Blue"/>
+                                   <TextBlock Text="{Binding Name}"></TextBlock>
+                               </StackPanel>
+                            </DataTemplate>
+                        </GroupBox.Resources>
+                        <TreeView ItemsSource="{Binding DiskRootDir.DirectoryItems}"/>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Header="Файлы" >
                         <ListBox SelectedItem="{Binding SelectedDirectory.Files, Mode=OneWay}">
