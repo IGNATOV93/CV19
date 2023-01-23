@@ -249,12 +249,12 @@
                         </GroupBox.Resources>
                         <TreeView ItemsSource="{Binding DiskRootDir.DirectoryItems}"/>
                     </GroupBox>
-                    <GroupBox Grid.Column="1" Header="Файлы" >
+                    <!--<GroupBox Grid.Column="1" Header="Файлы" >
                         <ListBox SelectedItem="{Binding SelectedDirectory.Files, Mode=OneWay}">
 
                         </ListBox>
 
-                    </GroupBox>
+                    </GroupBox>-->
                 </Grid>
             </TabItem>
         </TabControl>
