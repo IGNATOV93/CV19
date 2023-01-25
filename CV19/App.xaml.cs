@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using CV19.Services;
 
 namespace CV19
 {
@@ -15,6 +16,8 @@ namespace CV19
         {
             IsDesingMode = false;
             base.OnStartup(e);
+            var service_test = new DataService();
+            var countries = service_test.GetData().ToArray();
         }
     }
 }
