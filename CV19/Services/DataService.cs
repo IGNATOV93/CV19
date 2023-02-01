@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using CV19.Models;
@@ -27,17 +28,24 @@ namespace CV19.Services
         }
 
 
-        private static IEnumerable<string> GetDataLines()//разбиывает поток на последовательность строк
+        private static IEnumerable<string> GetDataLines() //разбиывает поток на последовательность строк
         {
-            var data_stream = GetDataStream().Result; 
-            var data_reader = new StreamReader(data_stream);
+
+
+              var data_stream = (SynchronizationContext.Current is null? GetDataStream(): Task.Run(GetDataStream)).Result;
+            
+        
+         var data_reader = new StreamReader(data_stream);
 
             while (!data_reader.EndOfStream)
             {
                 var line = data_reader.ReadLine();
                 if (string.IsNullOrWhiteSpace(line)) continue;
 
-                yield return line.Replace("Korea,", "Korea -"). Replace("Bonaire,","Bonaire -");
+                yield return line
+                    .Replace("Korea,", "Korea -")
+                    .Replace("Bonaire,", "Bonaire -")
+                    .Replace("Helena,", "Helena -");
             }
         }
 
@@ -59,9 +67,9 @@ namespace CV19.Services
 
                 var province = row[0].Trim();
                 var country_name = row[1].Trim(' ', '"');
-                var latitude = double.Parse(row[2]);
-                var longitude = double.Parse(row[3]);
-                var counts = row.Skip(4).Select(int.Parse).ToArray();
+                var latitude = double.Parse(row[3] == "" ? "0" : row[3], CultureInfo.InvariantCulture);
+                var longitude = double.Parse(row[4] == "" ? "0" : row[4], CultureInfo.InvariantCulture);
+                var counts = row.Skip(5).Select(int.Parse).ToArray();
                 yield return (province, country_name, (latitude, longitude), counts);
             }
 
