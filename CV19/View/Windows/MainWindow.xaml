@@ -9,6 +9,7 @@
         xmlns:vm="clr-namespace:CV19.ViewModels"
         xmlns:decanat="clr-namespace:CV19.Models.Decanat"
         xmlns:local="clr-namespace:CV19"
+        xmlns:view ="clr-namespace:CV19.View"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:cm="System.ComponentModel.SortDescrition"
         xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
@@ -50,48 +51,9 @@
 
 
         </StatusBar>
-        <TabControl SelectedIndex="{Binding SelectedPageIndex}">
-            <TabItem Header="Тестирование виртуализации" Visibility="Collapsed">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="34*"/>
-                        <ColumnDefinition Width="185*"/>
-                        <ColumnDefinition Width="575*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding Source={x:Static local:App.IsDesingMode}}" Grid.ColumnSpan="3"/>
-                    <ListBox HorizontalAlignment="Left" Width="200" Margin="30,30,0,30" 
-                             ItemsSource="{Binding TeStudents}" 
-                             VirtualizingPanel.IsVirtualizing="True"
-                             VirtualizingPanel.VirtualizationMode="Recycling"
-                             VirtualizingPanel.IsContainerVirtualizable="True" Grid.ColumnSpan="3"
-                             >
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel/>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate DataType="decanat:Student">
-                                <Border BorderBrush="Blue" BorderThickness="1" CornerRadius="3" Padding="3" >
-                                    <Border.CacheMode>
-                                        <BitmapCache RenderAtScale="5"/>
-                                    </Border.CacheMode>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Surname}" ToolTip="{Binding Name}"/>
-                                        <TextBlock Text="{Binding Name}" ToolTip="{Binding Name}"/>
-                                        <TextBlock Text="{Binding Patronymic,TargetNullValue=--}" ToolTip="{Binding Name}"/>
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-
-                    </ListBox>
-                </Grid>
+        <TabControl >
+            <TabItem Header="Статистика">
+             <view:CountriesStatisticView/>
             </TabItem>
             <TabItem Header="Студенты">
                 <Grid>
@@ -108,9 +70,7 @@
                             <DockPanel.Resources>
                                 <CollectionViewSource 
                      x:Key="GroupsCollection" 
-                     x:Name="GroupsCollection"
-                     Source="{Binding Groups}"
-                        Filter="GroupCollection_OnFilter">
+                     Filter="GroupCollection_OnFilter">
                                     <CollectionViewSource.SortDescriptions>
                                           <componentModel:SortDescription PropertyName="Name" Direction="Descending"/>
                                     </CollectionViewSource.SortDescriptions>
@@ -126,10 +86,10 @@
                             </DockPanel>
 
                             <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0.3">
-                                <Button Content="Добавить" Padding="0,7" Style="{StaticResource CheckButtonStyle}"  Command="{Binding CreateGroupCommand}"/>
-                                <Button Content="Удалить" Padding="0,7" Style="{StaticResource RemoveButtonStyle}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
+                                <Button Content="Добавить" Padding="0,7" Style="{StaticResource CheckButtonStyle}"  />
+                                <Button Content="Удалить" Padding="0,7" Style="{StaticResource RemoveButtonStyle}" />
                             </UniformGrid>
-                            <ListBox ItemsSource="{Binding Source={StaticResource GroupsCollection}}" SelectedIndex="1"      
+                                <ListBox ItemsSource="{Binding Source={StaticResource GroupsCollection}}" SelectedIndex="1"      
                                  SelectedItem="{Binding SelectedGroup}"
                                  VirtualizingPanel.IsContainerVirtualizable="True"
                                  VirtualizingPanel.IsVirtualizing="True"
@@ -216,47 +176,7 @@
             <TabItem Header="График" Visibility="Collapsed" Margin="7,-2,-2,0">
                 <oxy:PlotView Model="{Binding MyModel}"/>
             </TabItem>
-            <TabItem Header="Файловая система">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                       <ColumnDefinition Width="250"/>
-                       <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <GroupBox Grid.Column="0" Header="Директории">
-                        <!--<ListBox ItemsSource="{Binding DiskRootDir.DirectoryItems}"
-                                SelectedItem="{Binding SelectedDirectory}"
-                                SelectedIndex="0">
-                            <ListBox.ItemTemplate>
-                                    <DataTemplate DataType="vm:DirectoryViewModel">
-                                       <TextBlock Text="{Binding Name}" ToolTip="{Binding CreationTime}"/>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                        </ListBox>-->
-                        <GroupBox.Resources>
-                            <HierarchicalDataTemplate DataType="{x:Type vm:DirectoryViewModel}"
-                                                      ItemsSource="{Binding DirectoryItems}">
-                                <StackPanel Orientation="Horizontal">
-                                    <fa:ImageAwesome Height="12" Icon="FolderOutline" Foreground="GreenYellow" Margin="0 0 3 0"/>
-                                    <TextBlock Text="{Binding Name}"/>
-                                </StackPanel>
-                            </HierarchicalDataTemplate>
-                            <DataTemplate DataType="{x:Type vm:FileViewModel}">
-                               <StackPanel Orientation="Horizontal" ToolTip="{Binding CreationTime}">
-                                   <fa:ImageAwesome Height="12" Icon="File" Foreground="Blue"/>
-                                   <TextBlock Text="{Binding Name}"></TextBlock>
-                               </StackPanel>
-                            </DataTemplate>
-                        </GroupBox.Resources>
-                        <TreeView ItemsSource="{Binding DiskRootDir.DirectoryItems}"/>
-                    </GroupBox>
-                    <!--<GroupBox Grid.Column="1" Header="Файлы" >
-                        <ListBox SelectedItem="{Binding SelectedDirectory.Files, Mode=OneWay}">
-
-                        </ListBox>
-
-                    </GroupBox>-->
-                </Grid>
-            </TabItem>
+            
         </TabControl>
     </DockPanel>
 </Window>
