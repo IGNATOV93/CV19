@@ -19,6 +19,7 @@ using System.ComponentModel;
 using CV19.Models.Decanat;
 using System.Text.RegularExpressions;
 using System.Windows.Data;
+using CV19.View;
 using Group = CV19.Models.Decanat.Group;
 
 namespace CV19.ViewModels
@@ -26,7 +27,10 @@ namespace CV19.ViewModels
     internal class MainWindowViewModel : ViewModel
     {
         //-----------------------------------------------------------------------------------------------
-        
+        private readonly CountriesStatisticViewModel _CountiesStatistic;
+
+        //-----------------------------------------------------------------------------------------------
+
         #region SelectedGroup : Group - Выбранная группа
         /// <summary>Выбрнанная группа /// </summary>
         private Group _SelectedGroup;
@@ -142,6 +146,8 @@ namespace CV19.ViewModels
         //=====================================================================================================
         public MainWindowViewModel()
         {
+            _CountiesStatistic = new CountriesStatisticViewModel(this);
+
             #region Команды
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
                 // ChangeTabIndexCommand = new LambdaCommand(OnChangeTabIndexCommandExecuted, CanChangeTabIndexCommandExecute);
