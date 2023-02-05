@@ -14,9 +14,11 @@ namespace CV19.View
 {    
     internal class CountriesStatisticViewModel:ViewModel
     {
-        private DataService _DataService;
+        private readonly DataService _DataService;
+
 
         private  MainWindowViewModel MainModel { get; }
+
 
         #region Countries : IEnumerable<CountryInfo> - Статистика по странам
         /// <summary> Статистика по странам </summary>
@@ -30,6 +32,17 @@ namespace CV19.View
           private  set => Set(ref _Countries, value);
         }
 
+        #endregion
+
+        #region SelectedCountry : CountryInfo - Выбранная страна
+
+        /// <summary> Выбранная страна</summary>
+        private CountryInfo _SelectedCountry;
+        /// <summary> Выбранная страна</summary>
+        public CountryInfo SelectedCountry
+        {
+            get => _SelectedCountry;set => Set(ref _SelectedCountry, value);
+        }
         #endregion
         /// <summary>Отладочный конструктор , используемый в процессе разработки в визуальном дизайнере</summary>
         public CountriesStatisticViewModel() : this(null)
