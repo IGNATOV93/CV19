@@ -12,6 +12,7 @@
         xmlns:view ="clr-namespace:CV19.View"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:cm="System.ComponentModel.SortDescrition"
+        xmlns:CSV="clr-namespace:CV19.ViewModels"
         xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         Title="{Binding Title}" 
         Height="450" Width="800">
@@ -53,7 +54,7 @@
         </StatusBar>
         <TabControl >
             <TabItem Header="Статистика">
-             <view:CountriesStatisticView/>
+                <view:CountriesStatisticView DataContext="{Binding CountriesStatistic}"/>
             </TabItem>
             <TabItem Header="Студенты">
                 <Grid>
