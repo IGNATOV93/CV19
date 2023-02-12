@@ -10,6 +10,7 @@ using System.Windows;
 
 namespace CV19.Infrastructure.Converters
 {
+    [ValueConversion(typeof(Point),typeof(string))]
     internal class LocationPointToStr:Converter
     {
         public override object Convert(object value, Type t, object p, CultureInfo c)

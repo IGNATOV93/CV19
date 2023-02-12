@@ -9,6 +9,8 @@
              xmlns:view="clr-namespace:CV19.View"
              xmlns:m="clr-namespace:CV19.Models"
              xmlns:c="clr-namespace:CV19.Infrastructure.Converters"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+
              d:DataContext="{d:DesignInstance view:CountriesStatisticViewModel, d:IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -52,8 +54,9 @@
         <GroupBox Grid.Column="1" Header="Информация">
             <Grid>
                 <Grid.Resources>
+                    <sys:Double x:Key="Value3">3</sys:Double>
                     <c:Ratio K="2" x:Key="Ratio2"/>
-                     <c:Linear K="5" B="3" x:Key="Linear_K5_B3"/>
+                     <c:Linear K="5" B="{StaticResource Value3}" x:Key="Linear_K5_B3"/>
                 </Grid.Resources>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -64,7 +67,7 @@
                          ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
                 <TextBox Grid.Row="0" Margin="0 30 0 0 " 
                          VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"
-                         Text="{Binding Value,ElementName=ValueSlider,Converter={StaticResource Ratio2},UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding Value,ElementName=ValueSlider,Converter={StaticResource Linear_K5_B3},UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </GroupBox>
     </Grid>
