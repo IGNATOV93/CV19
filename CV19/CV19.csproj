@@ -155,7 +155,9 @@
     <Compile Include="Infrastructure\Converters\Converter.cs" />
     <Compile Include="Infrastructure\Converters\Linear.cs" />
     <Compile Include="Infrastructure\Converters\LocationPointToStr.cs" />
+    <Compile Include="Infrastructure\Converters\MultiConverter.cs" />
     <Compile Include="Infrastructure\Converters\Ratio.cs" />
+    <Compile Include="Infrastructure\Converters\ToArray.cs" />
     <Compile Include="Models\ConfirmedCount.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\CountryInfo.cs" />
