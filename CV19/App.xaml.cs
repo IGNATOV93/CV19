@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using CV19.Services;
 
 namespace CV19
@@ -16,7 +17,7 @@ namespace CV19
         {
             IsDesingMode = false;
             base.OnStartup(e);
-           
+
         }
     }
 }

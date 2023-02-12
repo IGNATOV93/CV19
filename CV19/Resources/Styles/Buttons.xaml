@@ -3,7 +3,7 @@
                     xmlns:fa="http://schemas.fontawesome.io/icons/"
                     >
     <Style x:Key="BthBase" TargetType="ButtonBase">
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
     </Style>
 
     <Style TargetType="Button" BasedOn="{StaticResource BthBase}"/>
@@ -14,8 +14,8 @@
     </Style>
 
     <Style x:Key="DangerBth" TargetType="Button" BasedOn="{StaticResource BthBase}">
-        <Setter Property="Background" Value="Red"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource RedBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
     </Style>
 
 
@@ -53,7 +53,7 @@
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
                <!-- <Setter Property="Background" TargetName="border" Value="DarkBlue"/>-->
-                <Setter Property="BorderBrush" TargetName="border" Value="White"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource WhiteBrush}"/>
                 <Setter Property="Foreground" Value="White"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="true">
@@ -140,10 +140,10 @@
         <ControlTemplate.Triggers>
         
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" TargetName="border" Value="White"/>
-                <Setter Property="BorderBrush" TargetName="border" Value="Red"/>
-                <Setter Property="Foreground" Value="Red"/>
-<Setter TargetName="Icon" Property="Foreground" Value="Red"/>
+                <Setter Property="Background" TargetName="border" Value="{StaticResource WhiteBrush}"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource RedBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource RedBrush}"/>
+<Setter TargetName="Icon" Property="Foreground" Value="{StaticResource RedBrush}"/>
     
 
                         
@@ -167,7 +167,7 @@
 
     <Style x:Key="CustomButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>

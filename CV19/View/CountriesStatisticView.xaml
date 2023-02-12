@@ -53,6 +53,7 @@
             <Grid>
                 <Grid.Resources>
                     <c:Ratio K="2" x:Key="Ratio2"/>
+                     <c:Linear K="5" B="3" x:Key="Linear_K5_B3"/>
                 </Grid.Resources>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
