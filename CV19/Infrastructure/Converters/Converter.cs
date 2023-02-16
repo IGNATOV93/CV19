@@ -5,11 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace CV19.Infrastructure.Converters
 {
-    internal abstract class Converter : IValueConverter
+    internal abstract class Converter : MarkupExtension,IValueConverter
     {
+        public override object ProvideValue(IServiceProvider sp) => this;
+       
+
         public abstract object Convert(object value, Type t, object p, CultureInfo c);
 
 

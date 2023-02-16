@@ -4,12 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CV19"
+             xmlns:common="clr-namespace:CV19.Infrastructure.Common"
              xmlns:vm="clr-namespace:CV19.ViewModels"
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              xmlns:view="clr-namespace:CV19.View"
              xmlns:m="clr-namespace:CV19.Models"
              xmlns:c="clr-namespace:CV19.Infrastructure.Converters"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             
 
              d:DataContext="{d:DesignInstance view:CountriesStatisticViewModel, d:IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -74,34 +76,23 @@
                 </Grid.RowDefinitions>
                 <GridSplitter VerticalAlignment="Bottom" HorizontalAlignment="Stretch"  Panel.ZIndex="1000"/>
                 <StackPanel Grid.Row="0">
-                    <Slider Grid.Row="0" Name="Value1" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
-                    <Slider Grid.Row="0" Name="Value2" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
-                    <Slider Grid.Row="0" Name="Value3" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
-                    <Slider Grid.Row="0" Name="Value4" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
+                    <Slider Name="Value1" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self},Converter={c:Linear K=5}}"/>
+                    <Slider Name="Value2" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
+                    <Slider Name="Value3" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
+                    <Slider Name="Value4" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
                 </StackPanel>
-                <ListBox Grid.Row="1">
-                    <ListBox.ItemsSource>
+               <Border Grid.Row="1" DataContext="{common:StringToIntArray '34;66;88;222;33;3333'}">
+                   <ListBox Grid.Row="1" ItemsSource="{Binding}">
+                       <!--<ListBox.ItemsSource>
                         <MultiBinding Converter="{StaticResource ToArrayConverter}">
                             <Binding ElementName="Value1" Path="Value"/>
                             <Binding ElementName="Value2" Path="Value"/>
                             <Binding ElementName="Value3" Path="Value"/>
                             <Binding ElementName="Value4" Path="Value"/>
                         </MultiBinding>
-                    </ListBox.ItemsSource>
-                </ListBox>
-              
-                <!--<TextBlock Grid.Row="1">
-                   <TextBlock.Text>
-                        <MultiBinding Converter="{StaticResource ToArrayConverter}" StringFormat="{}{0}">
-                            <Binding ElementName="Value1" Path="Value"/>
-                            <Binding ElementName="Value2" Path="Value"/>
-                            <Binding ElementName="Value3" Path="Value"/>
-                            <Binding ElementName="Value4" Path="Value"/>
-                        </MultiBinding>
-                    </TextBlock.Text>
-               </TextBlock>-->
-               
-               
+                    </ListBox.ItemsSource>-->
+                   </ListBox>
+                </Border>
             </Grid>
         </GroupBox>
     </Grid>

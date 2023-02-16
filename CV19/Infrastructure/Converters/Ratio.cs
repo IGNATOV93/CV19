@@ -9,6 +9,7 @@ using System.Windows.Markup;
 
 namespace CV19.Infrastructure.Converters
 {
+    [MarkupExtensionReturnType(typeof(Ratio))]
     internal class Ratio : Converter
 
     {

@@ -5,14 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace CV19.Infrastructure.Converters
 {
+    [MarkupExtensionReturnType(typeof(CompositreConverter))]
     internal class CompositreConverter:Converter
     {
+        [ConstructorArgument("First")]
         public IValueConverter First { get; set; }
-
+        [ConstructorArgument("Second")]
         public IValueConverter Second { get; set; }
+
+        public CompositreConverter() { }
+
+        public CompositreConverter(IValueConverter First) =>this.First = First;
+       
+
+        public CompositreConverter(IValueConverter First,IValueConverter Second): this(First)=>this.Second = Second;
+        
 
         public override object Convert(object v, Type t, object p, CultureInfo c)
         {
