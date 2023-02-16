@@ -79,17 +79,18 @@
                     <Slider Grid.Row="0" Name="Value3" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
                     <Slider Grid.Row="0" Name="Value4" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
                 </StackPanel>
-                <!--<ListBox Grid.Row="1">
-                   <ListBox.ItemsSource>
-                     <MultiBinding Converter="{StaticResource ToArrayConverter}">
-                         <Binding ElementName="Value1" Path="Value"/>
-                         <Binding ElementName="Value2" Path="Value"/>
-                         <Binding ElementName="Value3" Path="Value"/>
-                         <Binding ElementName="Value4" Path="Value"/>
+                <ListBox Grid.Row="1">
+                    <ListBox.ItemsSource>
+                        <MultiBinding Converter="{StaticResource ToArrayConverter}">
+                            <Binding ElementName="Value1" Path="Value"/>
+                            <Binding ElementName="Value2" Path="Value"/>
+                            <Binding ElementName="Value3" Path="Value"/>
+                            <Binding ElementName="Value4" Path="Value"/>
                         </MultiBinding>
-                   </ListBox.ItemsSource>
-                </ListBox>-->
-               <TextBlock Grid.Row="1">
+                    </ListBox.ItemsSource>
+                </ListBox>
+              
+                <!--<TextBlock Grid.Row="1">
                    <TextBlock.Text>
                         <MultiBinding Converter="{StaticResource ToArrayConverter}" StringFormat="{}{0}">
                             <Binding ElementName="Value1" Path="Value"/>
@@ -98,7 +99,9 @@
                             <Binding ElementName="Value4" Path="Value"/>
                         </MultiBinding>
                     </TextBlock.Text>
-               </TextBlock>
+               </TextBlock>-->
+               
+               
             </Grid>
         </GroupBox>
     </Grid>
