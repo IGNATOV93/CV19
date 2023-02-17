@@ -14,7 +14,7 @@ namespace CV19.Infrastructure.Converters
     {
         [ConstructorArgument("First")]
         public IValueConverter First { get; set; }
-        [ConstructorArgument("Second")]
+        [ConstructorArgument("Second ")]
         public IValueConverter Second { get; set; }
 
         public CompositreConverter() { }
