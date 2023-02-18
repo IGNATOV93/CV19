@@ -77,7 +77,7 @@
                 <GridSplitter VerticalAlignment="Bottom" HorizontalAlignment="Stretch"  Panel.ZIndex="1000"/>
                 <StackPanel Grid.Row="0">
                     <Slider Name="Value1" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self},Converter={c:Linear K=5}}"/>
-                    <Slider Name="Value2" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self},Converter={c:CompositeConverter First={c:Add 5},Second={c:Ratio 7}}}"/>
+                    <Slider Name="Value2" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
                     <Slider Name="Value3" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
                     <Slider Name="Value4" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
                 </StackPanel>
