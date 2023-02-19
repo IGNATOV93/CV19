@@ -19,13 +19,16 @@ using System.ComponentModel;
 using CV19.Models.Decanat;
 using System.Text.RegularExpressions;
 using System.Windows.Data;
+using System.Windows.Markup;
 using CV19.View;
 using Group = CV19.Models.Decanat.Group;
 
 namespace CV19.ViewModels
 {
+    [MarkupExtensionReturnType(typeof(MainWindowViewModel))]
     internal class MainWindowViewModel : ViewModel
     {
+        
         //-----------------------------------------------------------------------------------------------
       public  CountriesStatisticViewModel CountriesStatistic { get; }
 
@@ -133,7 +136,8 @@ namespace CV19.ViewModels
         private bool CanCloseApplicationCommandExecute(object p) => true;
         private void OnCloseApplicationCommandExecuted(object p)
         {
-            Application.Current.Shutdown();
+            (RootObject as Window)?.Close();
+           // Application.Current.Shutdown();
         }
 
         #endregion
