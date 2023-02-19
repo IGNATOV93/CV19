@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace CV19.Infrastructure.Converters
 {
+    [MarkupExtensionReturnType(typeof(ToArray))]
     internal class ToArray:MultiConverter
     {
         public override object Convert(object[] vv, Type t, object p, CultureInfo c)

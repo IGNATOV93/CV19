@@ -9,6 +9,7 @@ using System.Windows.Markup;
 
 namespace CV19.Infrastructure.Converters
 {
+    [MarkupExtensionReturnType(typeof(Converter))]
     internal abstract class Converter : MarkupExtension,IValueConverter
     {
         public override object ProvideValue(IServiceProvider sp) => this;
