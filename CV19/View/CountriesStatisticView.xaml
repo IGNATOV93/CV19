@@ -6,14 +6,16 @@
              xmlns:local="clr-namespace:CV19"
              xmlns:common="clr-namespace:CV19.Infrastructure.Common"
              xmlns:vm="clr-namespace:CV19.ViewModels"
+             xmlns:oxy="http://oxyplot.org/wpf"
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              xmlns:view="clr-namespace:CV19.View"
              xmlns:m="clr-namespace:CV19.Models"
              xmlns:c="clr-namespace:CV19.Infrastructure.Converters"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             
+            
 
-             d:DataContext="{d:DesignInstance view:CountriesStatisticViewModel, d:IsDesignTimeCreatable=True}"
+
+             d:DataContext="{d:DesignInstance vm:MainWindowViewModel, d:IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <c:LocationPointToStr x:Key="LocationConverter"/>
@@ -74,25 +76,14 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Text="Привеет Тест"></TextBlock>
                 <GridSplitter VerticalAlignment="Bottom" HorizontalAlignment="Stretch"  Panel.ZIndex="1000"/>
-                <StackPanel Grid.Row="0">
-                    <Slider Name="Value1" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self},Converter={c:Linear 5}}"/>
-                    <Slider Name="Value2" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}, Converter={c:CompositreConverter First={c:Add 5},Second={c:Ratio 7}}}"/>
-                    <Slider Name="Value3" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self},Converter={c:CompositreConverter {c:Linear 5,7},{c:CompositreConverter {c:Ratio 6},{c:Add 7}}}}"/>
-                    <Slider Name="Value4" Maximum="100" ToolTip="{Binding Value,RelativeSource={RelativeSource Self}}"/>
-                </StackPanel>
-               <Border Grid.Row="1" DataContext="{common:StringToIntArray '34;66;88;222;33;3333'}">
-                   <ListBox Grid.Row="1" ItemsSource="{Binding}">
-                       <!--<ListBox.ItemsSource>
-                        <MultiBinding Converter="{StaticResource ToArrayConverter}">
-                            <Binding ElementName="Value1" Path="Value"/>
-                            <Binding ElementName="Value2" Path="Value"/>
-                            <Binding ElementName="Value3" Path="Value"/>
-                            <Binding ElementName="Value4" Path="Value"/>
-                        </MultiBinding>
-                    </ListBox.ItemsSource>-->
-                   </ListBox>
-                </Border>
+
+                <oxy:PlotView Name="График" Model="{Binding MyModel}"  Grid.Row="0">
+
+
+                </oxy:PlotView>
+               
             </Grid>
         </GroupBox>
     </Grid>

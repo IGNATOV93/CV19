@@ -21,6 +21,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Data;
 using System.Windows.Markup;
 using CV19.View;
+using OxyPlot.Axes;
 using Group = CV19.Models.Decanat.Group;
 
 namespace CV19.ViewModels
@@ -173,10 +174,9 @@ namespace CV19.ViewModels
             }
             MyModel.Series.Add(line1);
             //TestDataPoints = data_points;
-
+            MyModel.Title = "ГраФик";
+            
         }
-
-       
         public PlotModel MyModel { get; private set; }
     }
 

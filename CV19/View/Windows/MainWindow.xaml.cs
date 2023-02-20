@@ -45,5 +45,10 @@ namespace CV19
             var collection = (CollectionViewSource)text_box.FindResource("GroupsCollection");
             collection.View.Refresh();
         }
+
+        private void CountriesStatisticView_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
