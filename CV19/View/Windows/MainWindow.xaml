@@ -175,7 +175,7 @@
                 </Grid>
             </TabItem>
 
-           <TabItem Header="График" Visibility="Collapsed" Margin="7,-2,-2,0">
+           <TabItem Header="График"  Margin="7,-2,-2,0">
                 <oxy:PlotView Model="{Binding MyModel}"/>
             </TabItem>
             
