@@ -177,6 +177,7 @@ namespace CV19.ViewModels
             MyModel.Title = "ГраФик";
             
         }
+
         public PlotModel MyModel { get; private set; }
     }
 

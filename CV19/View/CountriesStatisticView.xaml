@@ -12,10 +12,10 @@
              xmlns:m="clr-namespace:CV19.Models"
              xmlns:c="clr-namespace:CV19.Infrastructure.Converters"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-            
+             xmlns:oxyPlot="clr-namespace:OxyPlot;assembly=OxyPlot"
 
 
-             d:DataContext="{d:DesignInstance vm:MainWindowViewModel, d:IsDesignTimeCreatable=True}"
+             d:DataContext="{d:DesignInstance vm:MyModelNew, d:IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <c:LocationPointToStr x:Key="LocationConverter"/>
@@ -80,8 +80,6 @@
                 <GridSplitter VerticalAlignment="Bottom" HorizontalAlignment="Stretch"  Panel.ZIndex="1000"/>
 
                 <oxy:PlotView Name="График" Model="{Binding MyModel}"  Grid.Row="0">
-
-
                 </oxy:PlotView>
                
             </Grid>

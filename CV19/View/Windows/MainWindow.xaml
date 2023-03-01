@@ -15,7 +15,7 @@
         xmlns:CSV="clr-namespace:CV19.ViewModels"
         xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         Title="{Binding Title}" 
-        DataContext="{vm:MainWindowViewModel}"
+        DataContext="{vm:MyModelNew}"
         Height="450" Width="800">
     
     <Window.InputBindings>
@@ -176,7 +176,9 @@
             </TabItem>
 
            <TabItem Header="График"  Margin="7,-2,-2,0">
-                <oxy:PlotView Model="{Binding MyModel}"/>
+                <oxy:PlotView Model="{Binding MyModel}">
+                   
+                </oxy:PlotView>
             </TabItem>
             
         </TabControl>
