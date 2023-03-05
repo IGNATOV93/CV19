@@ -33,5 +33,6 @@ namespace CV19.Models
 
         public IEnumerable<PlaceInfo> ProvinceCounts { get; set; }
 
+       
     }
 }

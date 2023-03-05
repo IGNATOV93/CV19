@@ -76,13 +76,13 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="2" Text="Привеет Тест"></TextBlock>
+               
                 <GridSplitter Grid.Row="1"   VerticalAlignment="Bottom" HorizontalAlignment="Stretch"  Panel.ZIndex="1000"/>
-
                 <oxy:PlotView Grid.Row="0"  Model="{Binding MyModel}">
-
+               
                 </oxy:PlotView>
-                <TextBlock Grid.Row="3" Text="снова тест" Margin="0,60,0,0" ></TextBlock>
+
+                
             </Grid>
         </GroupBox>
     </Grid>

@@ -1,7 +1,9 @@
-﻿using CV19.ViewModels.Base;
+﻿using System.Windows.Ink;
+using CV19.ViewModels.Base;
 using OxyPlot;
 using OxyPlot.Axes;
 using System.Windows.Markup;
+using OxyPlot.Series;
 
 namespace CV19.ViewModels
 {
@@ -18,6 +20,7 @@ namespace CV19.ViewModels
 
             MyModel.Axes.Add( new LinearAxis { Position = AxisPosition.Left, Title = "Число", MajorGridlineStyle =(LineStyle.Solid),MinorGridlineStyle = (LineStyle.Dash)});
             MyModel.Axes.Add(new DateTimeAxis{ Position = AxisPosition.Bottom, Title = "Дата", MajorGridlineStyle = (LineStyle.Solid), MinorGridlineStyle = (LineStyle.Dash) });
+            
         }
     }
 }

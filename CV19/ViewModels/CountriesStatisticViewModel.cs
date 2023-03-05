@@ -5,13 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Markup;
 using CV19.Infrastructure.Commands;
 using CV19.Models;
 using CV19.Services;
 using CV19.ViewModels;
 using CV19.ViewModels.Base;
 namespace CV19.View
-{    
+{
+    [MarkupExtensionReturnType(typeof(CountriesStatisticViewModel))]
     internal class CountriesStatisticViewModel:ViewModel
     {
         private readonly DataService _DataService;
