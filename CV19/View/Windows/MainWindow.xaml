@@ -176,10 +176,10 @@
                 </Grid>
             </TabItem>
 
-           <TabItem Header="График"  Margin="0,-2,-2,0">
-                <oxy:PlotView Model="{Binding MyModel}">
+          <TabItem Header="График"  Margin="0,-2,-2,0">
+                <!--<oxy:PlotView Model="{Binding MyModel}">
                    
-                </oxy:PlotView>
+                </oxy:PlotView>-->
             </TabItem>
             
         </TabControl>
