@@ -169,6 +169,7 @@
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MyModelNew.cs" />
+    <Compile Include="ViewModels\ViewResolvingPlotModel.cs" />
     <Compile Include="View\CountriesStatisticView.xaml.cs">
       <DependentUpon>CountriesStatisticView.xaml</DependentUpon>
     </Compile>

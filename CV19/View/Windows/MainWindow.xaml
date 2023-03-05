@@ -55,7 +55,7 @@
         </StatusBar>
         <TabControl Height="398" >
             <TabItem Header="Статистика">
-                <view:CountriesStatisticView DataContext="{Binding CountriesStatistic}" />
+                <view:CountriesStatisticView />
             </TabItem>
             <TabItem Header="Студенты">
                 <Grid>
